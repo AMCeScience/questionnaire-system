@@ -20,7 +20,7 @@ class Migration_Fill_users extends CI_Migration {
     foreach ($users_arr as $emailaddress) {
       $data = [
         'emailaddress' => $emailaddress,
-        'login_hash' => hash('sha256', random_bytes(100))
+        'login_hash' => hash('sha256', $this->generateRandomString(100))
       ];
       
       $this->db->insert('users', $data);
@@ -29,6 +29,18 @@ class Migration_Fill_users extends CI_Migration {
 
   public function down() {
     $this->db->empty_table('users');
+  }
+
+  private function generateRandomString($length = 50) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()-_=+[{]};:<>,./?';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+
+    return $randomString;
   }
 
 }
