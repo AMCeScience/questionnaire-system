@@ -86,6 +86,14 @@ class Migration_Initialisation extends CI_Migration {
             'type' => 'INT',
             'constraint' => 3,
             'unsigned' => true
+          ],
+          'value' => [
+            'type' => 'VARCHAR',
+            'constraint' => 250
+          ],
+          'has_changed' => [
+            'type' => 'TINYINT',
+            'default' => 0
           ]
         ]);
 
