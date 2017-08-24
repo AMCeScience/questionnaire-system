@@ -4,13 +4,12 @@ class Auth extends MY_Library {
   
   public function checkLogin()
   {
-    $this->load->helper('url');
     $this->load->model('users');
 
     $user = $this->session->user;
 
     if (is_null($user) || is_a($user, 'Users')) {
-      redirect('/login/error');
+      return false;
     }
 
     fixObject($user);
@@ -18,7 +17,7 @@ class Auth extends MY_Library {
     $validated_user = $this->users->getUserByObject($user);
 
     if (is_null($validated_user)) {
-      redirect('/login/error');
+      return false;
     }
 
     return true;

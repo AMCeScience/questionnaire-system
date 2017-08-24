@@ -9,15 +9,17 @@ asyncLogin = function() {
       if (response.success !== true) {
         addFailedBox();
 
-        return;
+        return false;
       }
 
-      window.location = '/questionnaire';
+      window.location = response.redirect;
     },
     failure: function(response) {
       addFailedBox();
     }
   });
+
+  return false;
 }
 
 addFailedBox = function() {

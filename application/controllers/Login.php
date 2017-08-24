@@ -19,13 +19,6 @@ class Login extends CI_Controller {
     $this->layout->view('login/not_logged');
   }
 
-  public function logout()
-  {
-    $this->auth->logout();
-
-    redirect('/');
-  }
-
   public function hash()
   {
     $this->load->helper('url');

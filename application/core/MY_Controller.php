@@ -10,6 +10,10 @@ class MY_Auth extends CI_Controller
         // Call CI_Controller __construct first
         parent::__construct();
         // Call user authentication function
-        $this->auth->checkLogin();
+        if (!$this->auth->checkLogin()) {
+          $this->load->helper('url');
+          
+          redirect('/login/error');
+        }
     }
 }
