@@ -18,6 +18,12 @@ class Migration_Initialisation extends CI_Migration {
           'emailaddress' => [
             'type' => 'VARCHAR',
             'constraint' => 250
+          ],
+          'progress' => [
+            'type' => 'INT',
+            'constraint' => 3,
+            'unsigned' => true,
+            'default' => 0
           ]
         ]);
 
@@ -66,6 +72,10 @@ class Migration_Initialisation extends CI_Migration {
             'type' => 'INT',
             'constraint' => 1,
             'unsigned' => true
+          ],
+          'has_changed' => [
+            'type' => 'TINYINT',
+            'default' => 0
           ]
         ]);
 

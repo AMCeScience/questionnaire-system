@@ -20,6 +20,12 @@
         <a class="nav-link text-warning" href="/questionnaire/form">Questionnaire</a>
       </li>
     </ul>
+
+    <div class="progress">
+      <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo $progress; ?>%" aria-valuenow="<?php echo $progress; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+
+    <a class="btn btn-dark" href="/logout" role="button">Sign out</a>
   </div>
 </nav>
 

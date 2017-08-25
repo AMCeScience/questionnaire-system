@@ -23,6 +23,19 @@ class Auth extends MY_Library {
     return true;
   }
 
+  public function getUserId()
+  {
+    if ($this->checkLogin()) {
+      $user = $this->session->user;
+
+      fixObject($user);
+
+      return $user->user_id;
+    }
+
+    return null;
+  }
+
   public function login($email, $hash)
   {
     $this->load->model('users');

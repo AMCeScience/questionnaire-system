@@ -2,3 +2,22 @@
   height: 56px;
   margin-bottom: 40px;
 }
+
+.navbar .progress {
+  width: 25%;
+  margin-right: 25px;
+}
+
+.load-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: table;
+}
+
+.load-overlay .loader-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.load-overlay .loader {
+  margin: 0 auto;
+}

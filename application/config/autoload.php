@@ -103,7 +103,7 @@ $autoload['helper'] = array('fix_object');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('.env');
 
 /*
 | -------------------------------------------------------------------
