@@ -144,7 +144,7 @@
     </tbody>
   </table>
 
-  <a class="btn btn-primary btn-continue" href="#" role="button">I've checked my previous answers</a>
+  <a class="btn btn-primary btn-continue" href="#" role="button"><span class="oi oi-check" title="checked" aria-hidden="true"></span> I've checked my previous answers</a>
 
   <div class="clearfix"></div>
 </div>
