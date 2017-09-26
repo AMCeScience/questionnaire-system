@@ -33,3 +33,11 @@
 .software-check .table td, .software-check .table th {
   padding: 0.4rem 0.75rem;
 }
+
+.custom-checkbox, .custom-radio {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

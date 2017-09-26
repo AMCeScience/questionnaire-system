@@ -1,5 +1,9 @@
 <link rel="stylesheet" href="/css/form_layout.css">
 <link rel="stylesheet" href="/css/questionnaire.css">
+<link rel="stylesheet" href="/css/ion.rangeSlider.css">
+<link rel="stylesheet" href="/css/ion.rangeSlider.skinNice.css">
+
+<script src="/js/ion.rangeSlider.min.js"></script>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="/">Systematic Review Questionnaire</a>

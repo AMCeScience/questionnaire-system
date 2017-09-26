@@ -35,6 +35,8 @@ class Questionnaire extends MY_Auth {
     $data['tab_active'] = 'questionnaire';
     $data['progress'] = $this->users->getProgress($this->auth->getUserId());
 
+    $data['generic_questions'] = $this->config->item('generic_questions');
+
     $this->layout->questionnaireView('questionnaire/questionnaire_form', $data);
   }
 
@@ -83,10 +85,8 @@ class Questionnaire extends MY_Auth {
       // TODO
     }
 
-    if ($completed === 'prefill_check' && $this->users->getProgress($this->auth->getUserId()) < 1) {
-      $progress_increments = $this->config->item('progress');
-
-      $this->users->updateProgress($this->auth->getUserId(), $progress_increments['prefill_check']);
+    if ($completed === 'prefill_check') {
+      $this->users->updateProgress($this->auth->getUserId(), 'prefill_check');
 
       echo json_encode(['success' => true]);
 

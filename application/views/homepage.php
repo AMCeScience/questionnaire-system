@@ -34,7 +34,7 @@
 		<div class="col-12">
 			<h2 class="featurette-heading">Research Team</h2>
 		</div>
-    <div class="col-md-3 col-6">
+    <div class="col-md-4 col-12">
     	<a href="http://www.ebioscience.amc.nl/about-us/allard-van-altena/" target="_blank">
 	      <div class="img-circle">
 	      	<img src="/images/allard.jpeg" width="140" style="margin-top: -18px;">
@@ -42,7 +42,7 @@
 	      <p>Allard van Altena</p>
       </a>
     </div>
-    <div class="col-md-3 col-6">
+    <div class="col-md-4 col-12">
 	    <a href="http://www.ebioscience.amc.nl/about-us/silvia-olabarriaga/" target="_blank">
 	    	<div class="img-circle">
 	      	<img src="/images/silvia.png" height="140">
@@ -50,13 +50,9 @@
 	      <p>Sílvia Delgado Olabarriaga</p>
 	    </a>
     </div>
-    <div class="col-md-3 col-6">
+    <div class="col-md-4 col-12">
       <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" height="140">
       <p>René Spijker</p>
-    </div>
-    <div class="col-md-3 col-6">
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" height="140">
-      <p>Mariska Leeflang</p>
     </div>
   </div>  
 </div>
