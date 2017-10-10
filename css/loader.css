@@ -1,4 +1,10 @@
- .loader {
+.loader.light {
+  border-top: 0.7em solid rgba(100, 76, 3, 0.3);
+  border-right: 0.7em solid rgba(100, 76, 3, 0.3);
+  border-bottom: 0.7em solid rgba(100, 76, 3, 0.3);
+  border-left: 0.7em solid white;
+}
+.loader {
   font-size: 10px;
   position: relative;
   text-indent: -9999em;

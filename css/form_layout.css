@@ -1,4 +1,4 @@
-.btn-continue {
+.btn-continue, .btn-previous, .btn-final {
   margin: 35px;
   display: block;
 }

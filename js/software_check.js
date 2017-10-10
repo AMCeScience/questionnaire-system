@@ -17,7 +17,7 @@ $(function() {
     });
 
     $.post({
-      url: '/questionnaire/updateSoftware',
+      url: '/answer/updateSoftware',
       data: {
         new_value: $(this).val(),
         software_id: $(this).attr('name')
@@ -45,7 +45,7 @@ $(function() {
     });
 
     $.post({
-      url: '/questionnaire/updatePrefill',
+      url: '/answer/updatePrefill',
       data: {
         new_value: $(this).val(),
         type: $(this).attr('name')
@@ -61,7 +61,7 @@ $(function() {
     e.preventDefault();
 
     $.post({
-      url: '/questionnaire/progress',
+      url: '/progress/ajax',
       data: {
         completed: 'prefill_check'
       },

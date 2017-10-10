@@ -3,12 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Questionnaire extends MY_Auth {
 
-  public function index()
+  private $progress;
+  private $user_id;
+
+  function __construct()
   {
+    parent::__construct();
+
     $this->load->model('users');
-    
+
+    $this->progress = $this->users->getProgress($this->auth->getUserId());
+    $this->user_id = $this->auth->getUserId();
+  }
+
+  public function index()
+  { 
     $data['tab_active'] = 'landing';
-    $data['progress'] = $this->users->getProgress($this->auth->getUserId());
+    $data['progress'] = $this->progress;
 
     $this->layout->questionnaireView('questionnaire/landing', $data);
   }
@@ -16,84 +27,59 @@ class Questionnaire extends MY_Auth {
   public function software()
   {
     $this->load->model('prefills');
-    $this->load->model('users');
 
-    $prefill_data = $this->prefills->getPrefills($this->auth->getUserId());
+    $prefill_data = $this->prefills->getPrefills($this->user_id);
 
     $data['tab_active'] = 'software_check';
     $data['software'] = $prefill_data['software'];
     $data['reviews'] = $prefill_data['reviews'];
-    $data['progress'] = $this->users->getProgress($this->auth->getUserId());
+    $data['progress'] = $this->progress;
     
     $this->layout->questionnaireView('questionnaire/software_check', $data);
   }
 
   public function form()
   {
-    $this->load->model('users');
+    $this->load->model('prefills');
+    $this->load->model('answers');
+
+    $form_page = $this->uri->segment(3);
+    
+    $data['form_page'] = null;
+    
+    if (!is_null($form_page) && is_numeric($form_page) && $form_page < 3) {
+      $data['form_page'] = $form_page;
+    }
 
     $data['tab_active'] = 'questionnaire';
-    $data['progress'] = $this->users->getProgress($this->auth->getUserId());
+    $data['progress'] = $this->progress;
+
+    $data['user_type'] = $this->prefills->userType($this->user_id);
 
     $data['generic_questions'] = $this->config->item('generic_questions');
+    $data['tool_questions'] = $this->config->item('specific_questions');
+    $data['sus_questions'] = $this->config->item('usability_questions');
+
+    $data['user_answers'] = $this->answers->get_answers($this->user_id);
 
     $this->layout->questionnaireView('questionnaire/questionnaire_form', $data);
   }
 
-  public function updateSoftware()
+  public function nextCheck()
   {
-    $new_value = filter_input(INPUT_POST, 'new_value', FILTER_SANITIZE_NUMBER_INT);
-    $software_id = filter_input(INPUT_POST, 'software_id', FILTER_SANITIZE_NUMBER_INT);
+    $question_lists = ['generic', 'specific', 'usability'];
 
-    if (!is_null($new_value) && !is_null($software_id)) {
-      $this->load->model('prefills');
+    $question_list = $this->input->post('question_list');
 
-      $this->prefills->updateSoftware($software_id, $this->auth->getUserId(), $new_value);
-
-      echo json_encode(['success' => true]);
-
-      return;
+    if (!in_array($question_list, $question_lists)) {
+      return false;
     }
 
-    echo json_encode(['success' => false]);
-  }
+    $this->load->model('answers');
 
-  public function updatePrefill()
-  {
-    $new_value = filter_input(INPUT_POST, 'new_value', FILTER_SANITIZE_NUMBER_INT);
-    $type = filter_input(INPUT_POST, 'type', FILTER_DEFAULT);
+    list($completion, $to_do) = $this->answers->listCompletion($this->user_id, $question_list);
 
-    if ($type !== 'reviews' && $type !== 'papers') {
-      return;
-    }
-
-    $this->load->model('prefills');
-
-    $this->prefills->updatePrefill($type, $this->auth->getUserId(), $new_value);
-
-    echo json_encode(['success' => true]);
-  }
-
-  public function progress()
-  {
-    $progress = filter_input(INPUT_POST, 'progress', FILTER_SANITIZE_NUMBER_INT);
-    $completed = filter_input(INPUT_POST, 'completed', FILTER_DEFAULT);
-
-    $this->load->model('users');
-
-    if (!is_null($progress)) {
-      // TODO
-    }
-
-    if ($completed === 'prefill_check') {
-      $this->users->updateProgress($this->auth->getUserId(), 'prefill_check');
-
-      echo json_encode(['success' => true]);
-
-      return;
-    }
-
-    echo json_encode(['success' => false]);
+    echo json_encode(['completed' => $completion === 1, 'todo' => $to_do]);
   }
 
 }

@@ -40,4 +40,34 @@ class Prefills extends CI_Model {
       ->update('prefills');
   }
 
+  public function userType($user_id)
+  {
+    if ($this->isUsing($user_id)) {
+      return 'using';
+    }
+
+    if ($this->isConsideringUse($user_id)) {
+      return 'considering';
+    }
+
+    return 'no_use';
+  }
+
+  public function isUsing($user_id)
+  {
+    $prefill = $this->db->select('prefill_id')->get_where('prefills', ['user_id' => $user_id])->row(0);
+
+    return $this->db->from('softwares_to_prefills')->where('prefill_id', $prefill->prefill_id)->where_in('value', ['2', '3'])->count_all_results() > 0;
+  }
+
+  public function isConsideringUse($user_id)
+  {
+    $prefill = $this->db->select('prefill_id')->get_where('prefills', ['user_id' => $user_id])->row(0);
+
+    $is_using = $this->isUsing($user_id);
+    $is_considering = $this->db->from('softwares_to_prefills')->where(['user_id' => $prefill_prefill_id, 'value' => '1'])->count_all_results() > 0;
+
+    return (!$is_using && $is_considering);
+  }
+
 }

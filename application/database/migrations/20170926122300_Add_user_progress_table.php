@@ -34,6 +34,6 @@ class Migration_Add_user_progress_table extends CI_Migration {
   }
 
   public function down() {
-
+    $this->dbforge->drop_table('user_progress');
   }
 }

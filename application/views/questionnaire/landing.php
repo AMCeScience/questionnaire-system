@@ -1,7 +1,11 @@
 <div class="container">
-  Check software first
+  <p>Check software first</p>
 
-  Progress bar
+  <p>Progress bar</p>
 
-  Go to questionnaire button!
+  <p>Go to questionnaire button!</p>
+
+  <p>Questionnaire takes approximately 30 minutes.</p>
+  
+  <p>Questionnaire saves between pages, can be left and continued later on.</p>
 </div>

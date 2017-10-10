@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="/css/form_layout.css">
 <link rel="stylesheet" href="/css/questionnaire.css">
-<link rel="stylesheet" href="/css/ion.rangeSlider.css">
-<link rel="stylesheet" href="/css/ion.rangeSlider.skinNice.css">
+<link rel="stylesheet" href="/css/nouislider.min.css">
+<link rel="stylesheet" href="/css/loader.css">
 
-<script src="/js/ion.rangeSlider.min.js"></script>
+<script src="/js/nouislider.min.js"></script>
+<script src="/js/jquery.debounce.js"></script>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="/">Systematic Review Questionnaire</a>
@@ -21,7 +22,7 @@
         <a class="nav-link" href="/questionnaire/software">Previous answers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-warning" href="/questionnaire/form">Questionnaire</a>
+        <a class="nav-link text-warning <?php echo ($tab_active === 'questionnaire' ? 'active' : ''); ?>" href="/questionnaire/form">Questionnaire</a>
       </li>
     </ul>
 
