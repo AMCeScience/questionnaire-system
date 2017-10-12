@@ -23,9 +23,7 @@ class Users extends CI_Model {
     $user = $this->db->get_where('user_progress', ['user_id' => $user_id])->row(0);
 
     if (is_null($user)) {
-      $this->updateProgress($user_id, 'start');
-
-      return $this->getProgress($user_id);
+      return 0;
     }
 
     return $user->percentage;
