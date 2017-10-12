@@ -51,8 +51,12 @@
 	    </a>
     </div>
     <div class="col-md-4 col-12">
-      <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" height="140">
-      <p>René Spijker</p>
+      <a href="https://www.linkedin.com/in/spijkerrene/">
+        <div class="img-circle">
+          <img src="/images/rene.jpg" height="140">
+        </div>
+        <p>René Spijker</p>
+      </a>
     </div>
   </div>  
 </div>

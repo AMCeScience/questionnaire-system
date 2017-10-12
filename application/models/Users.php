@@ -58,7 +58,7 @@ class Users extends CI_Model {
       $data = [
         'user_id' => $user_id,
         'progress' => $progress,
-        'percentage' => $percentage
+        'percentage' => 0
       ];
 
       $this->db->insert('user_progress', $data);
