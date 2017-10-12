@@ -11,10 +11,11 @@ class Answer extends MY_Auth {
     $question_id = $this->input->post('question_id');
     $answer = $this->input->post('answer');
     $other_text = $this->input->post('other_text');
+    $software_id = $this->input->post('software_id');
 
     $this->load->model('answers');
 
-    list($success, $progress) = $this->answers->store($user_id, $question_list, $question_id, $answer, $other_text);
+    list($success, $progress) = $this->answers->store($user_id, $question_list, $question_id, $answer, $other_text, $software_id);
 
     if (!$success) {
       echo json_encode(['success' => false, 'error' => '']);
@@ -23,6 +24,39 @@ class Answer extends MY_Auth {
     }
 
     echo json_encode(['success' => true, 'new_progress' => $progress]);
+  }
+
+  public function ajaxRedo()
+  {
+    $user_id = $this->auth->getUserId();
+
+    $software_id = $this->input->post('software_id');
+
+    $this->load->model('answers');
+
+    list($success, $progress) = $this->answers->store($user_id, 'specific', 1, '', '', $software_id, true);
+
+    if (!$success) {
+      echo json_encode(['success' => false, 'error' => '']);
+
+      return;
+    }
+
+    echo json_encode(['success' => true]); 
+  }
+
+  public function storeComment()
+  {
+    $user_id = $this->auth->getUserId();
+
+    $question_list = $this->input->post('question_list');
+    $comment = $this->input->post('comment');
+
+    $this->load->model('answers');
+
+    $success = $this->answers->storeComment($user_id, $question_list, $comment);
+
+    echo json_encode(['success' => $success]);
   }
 
   public function updateSoftware()

@@ -5,7 +5,7 @@
 
   <form class="form-signin" onsubmit="asyncLogin(); return false;">
     <h2 class="form-signin-heading">Please sign in</h2>
-    <div class="alert alert-info" role="alert">You'll find the sign in info in your invitation e-mail</div>
+    <div class="alert alert-info" role="alert">You'll find the sign-in info in your invitation e-mail</div>
     
     <label for="inputEmail" class="sr-only">Email address</label>
     <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" autocomplete="off">

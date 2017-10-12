@@ -1,10 +1,10 @@
-<fieldset data-question-id="<?php echo $question_number; ?>" class="custom-controls-stacked">
+<fieldset data-question-id="<?php echo $question_number; ?>" data-followup-name="<?php echo $followup; ?>" class="custom-controls-stacked">
   <legend><?php echo $question_number . '. ' . $question; ?></legend>
   
   <?php foreach ($answers as $value => $answer) { ?>
     <?php $selected = ''; ?>
     
-    <?php if (!is_null($question_answer) && strtolower($answer) === $question_answer) {
+    <?php if (!is_null($question_answer) && strtolower($value) === $question_answer) {
       $selected = 'checked="checked"';
     } ?>
 
@@ -28,7 +28,7 @@
     } ?>
     
     <label class="custom-control custom-radio">
-      <input name="<?php echo $name; ?>" <?php echo $selected; ?> type="radio" class="custom-control-input" value="0">
+      <input name="<?php echo $name; ?>" <?php echo $selected; ?> type="radio" class="custom-control-input other-option" value="0">
       <span class="custom-control-indicator"></span>
       <span class="custom-control-description">Other</span>
     </label>
@@ -38,23 +38,3 @@
     </div>
   <?php } ?>
 </fieldset>
-
-<?php if ($followup) { ?>
-  <script>
-    $(function() {
-      if ($('input[name=<?php echo $name; ?>]').val() === 'yes') {
-        $('.<?php echo $followup; ?>-container').css('display', 'flex');
-      }
-
-      $('input[name=<?php echo $name; ?>]').change(function() {
-        if ($(this).val() === 'yes') {
-          $('.<?php echo $followup; ?>-container').css('display', 'flex');
-
-          return;
-        }
-
-        $('.<?php echo $followup; ?>-container').hide();
-      });
-    });
-  </script>
-<?php } ?>

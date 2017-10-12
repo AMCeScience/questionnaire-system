@@ -41,6 +41,7 @@ class Questionnaire extends MY_Auth {
   public function form()
   {
     $this->load->model('prefills');
+    $this->load->model('softwares');
     $this->load->model('answers');
 
     $form_page = $this->uri->segment(3);
@@ -60,9 +61,33 @@ class Questionnaire extends MY_Auth {
     $data['tool_questions'] = $this->config->item('specific_questions');
     $data['sus_questions'] = $this->config->item('usability_questions');
 
-    $data['user_answers'] = $this->answers->get_answers($this->user_id);
+    $data['user_answers'] = $this->answers->getAnswers($this->user_id);
+    $data['comments'] = $this->answers->getComments($this->user_id);
+
+    $picked_software = $this->softwares->getUserSoftware($this->user_id);
+
+    if (!is_null($picked_software)) {
+      $data['picked_software'] = $picked_software;
+    }
 
     $this->layout->questionnaireView('questionnaire/questionnaire_form', $data);
+  }
+
+  public function redo()
+  {
+    $this->load->model('prefills');
+
+    $software_arr = $this->prefills->getUndoneUserSoftware($this->user_id);
+
+    if (count($software_arr) < 1) {
+      redirect('questionnaire');
+    }
+
+    $data['tab_active'] = 'questionnaire';
+    $data['progress'] = $this->progress;
+    $data['interesting_software'] = $software_arr;
+
+    $this->layout->questionnaireView('questionnaire/redo', $data);
   }
 
   public function nextCheck()
@@ -77,9 +102,13 @@ class Questionnaire extends MY_Auth {
 
     $this->load->model('answers');
 
-    list($completion, $to_do) = $this->answers->listCompletion($this->user_id, $question_list);
+    if ($question_list === 'specific' || $question_list === 'usability') {
+      $software_id = $this->answers->getLatestSoftware($this->user_id);
+    }
 
-    echo json_encode(['completed' => $completion === 1, 'todo' => $to_do]);
+    list($completion, $to_do) = $this->answers->listCompletion($this->user_id, $question_list, $software_id);
+    
+    echo json_encode(['completed' => $completion >= 1, 'todo' => $to_do]);
   }
 
 }

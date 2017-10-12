@@ -13,6 +13,12 @@ class MY_Auth extends CI_Controller
         if (!$this->auth->checkLogin()) {
           $this->load->helper('url');
           
+          if ($this->input->is_ajax_request()) {
+            echo json_encode(['success' => false, 'logged_in' => false]);
+
+            die();
+          }
+
           redirect('/login/error');
         }
     }
