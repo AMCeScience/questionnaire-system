@@ -102,6 +102,8 @@ class Questionnaire extends MY_Auth {
 
     $this->load->model('answers');
 
+    $software_id = null;
+
     if ($question_list === 'specific' || $question_list === 'usability') {
       $software_id = $this->answers->getLatestSoftware($this->user_id);
     }

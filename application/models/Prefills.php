@@ -119,6 +119,7 @@ class Prefills extends CI_Model {
     $existing_id = $this->db->select('software_id')
       ->from('answers')
       ->where('software_id is not null', null, false)
+      ->where('user_id', $user_id)
       ->where_in('question_list', ['specific', 'usability'])
       ->order_by('answer_id', 'desc')
       ->get()
@@ -130,7 +131,7 @@ class Prefills extends CI_Model {
     }
 
     $interesting_list = $this->getInteresting($user_id);
-
+    
     $interesting_arr = [];
 
     foreach ($interesting_list as $interesting) {
