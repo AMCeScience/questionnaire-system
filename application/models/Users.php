@@ -20,7 +20,7 @@ class Users extends CI_Model {
   }
 
   public function getProgress($user_id) {
-    $user = $this->db->get_where('user_progress', ['user_id', $user_id])->row(0);
+    $user = $this->db->get_where('user_progress', ['user_id' => $user_id])->row(0);
 
     if (is_null($user)) {
       $this->updateProgress($user_id, 'start');
@@ -29,48 +29,5 @@ class Users extends CI_Model {
     }
 
     return $user->percentage;
-  }
-
-  public function updateProgress($user_id, $progress) {
-    $old_progress = $this->db->get_where('user_progress', ['user_id', $user_id])->row(0);
-    
-    $progress_increments = $this->config->item('progress');
-
-    $seen = false;
-
-    if (!is_null($old_progress)) {
-      foreach ($progress_increments as $increment => $precentage) {
-        if ($increment === $progress) {
-          $seen = true;
-        }
-
-        if ($increment === $old_progress->progress) {
-          if ($seen === true) {
-            return;
-          }
-
-          break;
-        }
-      }
-    }
-
-    if (is_null($old_progress)) {
-      $data = [
-        'user_id' => $user_id,
-        'progress' => $progress,
-        'percentage' => 0
-      ];
-
-      $this->db->insert('user_progress', $data);
-    } else {
-      $percentage = $progress_increments[$progress];
-      $new_percentage = $old_progress->percentage + $percentage;
-
-      $this->db
-        ->set('percentage', $new_percentage)
-        ->set('progress', $progress)
-        ->where('user_id', $user_id)
-        ->update('user_progress');
-    }
   }
 }

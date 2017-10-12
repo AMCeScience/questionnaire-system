@@ -61,13 +61,15 @@ $(function() {
     e.preventDefault();
 
     $.post({
-      url: '/progress/ajax',
-      data: {
-        completed: 'prefill_check'
-      },
+      url: '/questionnaire/finishedPrecheck',
+      data: {},
       dataType: 'json',
-      success: function() {
-        window.location = '/questionnaire'
+      success: function(response) {
+        if (response.success === true) {
+          window.location = '/questionnaire';
+        } else if (response.logged_in === false) {
+          window.location = 'login/error';
+        }
       }
     });
 

@@ -42,6 +42,26 @@ class Prefills extends CI_Model {
       ->update('prefills');
   }
 
+  public function precheckFinishedUpdateProgress($user_id)
+  {
+    $progress_increments = $this->config->item('progress');
+
+    $old_progress = $this->db->get_where('user_progress', ['user_id' => $user_id])->row(0);
+
+    $data = [
+      'progress' => 'prefill_check',
+      'percentage' => $progress_increments['prefill_check']
+    ];
+
+    if (is_null($old_progress)) {
+      $data['user_id'] = $user_id;
+
+      $this->db->insert('user_progress', $data);
+    } else {
+      $this->db->where('user_id', $user_id)->update('user_progress', $data);
+    }
+  }
+
   public function userType($user_id)
   {
     $this->load->model('softwares');

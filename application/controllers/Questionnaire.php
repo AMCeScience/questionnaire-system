@@ -111,4 +111,13 @@ class Questionnaire extends MY_Auth {
     echo json_encode(['completed' => $completion >= 1, 'todo' => $to_do]);
   }
 
+  public function finishedPrecheck()
+  {
+    $this->load->model('prefills');
+
+    $this->prefills->precheckFinishedUpdateProgress($this->user_id);
+
+    echo json_encode(['success' => true]);
+  }
+
 }
