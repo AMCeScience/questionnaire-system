@@ -68,3 +68,8 @@ fieldset.warning legend {
 textarea {
   resize: none;
 }
+
+.btn-redo {
+  width: 100%;
+  margin: 15px 0 0 0;
+}

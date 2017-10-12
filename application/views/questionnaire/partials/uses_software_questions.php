@@ -18,7 +18,7 @@
 
         <div class="row btn-page-change">
           <div class="col-12">
-            <a class="btn btn-primary btn-continue" href="/questionnaire/form/1" role="button">Next</a>
+            <a class="btn btn-primary btn-continue" href="/questionnaire/form/1" role="button">Next »</a>
           </div>
         </div>
       </div>
@@ -44,7 +44,7 @@
 
         <div class="row btn-page-change">
           <div class="col-4"><a class="btn btn-previous row-btn" href="/questionnaire/form" role="button">Previous</a></div>
-          <div class="col-8"><a class="btn btn-primary btn-continue row-btn" href="/questionnaire/form/2" role="button">Next</a></div>
+          <div class="col-8"><a class="btn btn-primary btn-continue row-btn" href="/questionnaire/form/2" role="button">Next »</a></div>
         </div>
       </div>
     <?php } ?>
@@ -69,7 +69,7 @@
 
         <div class="row btn-page-change">
           <div class="col-4"><a class="btn btn-previous row-btn" href="/questionnaire/form/1" role="button">Previous</a></div>
-          <div class="col-8"><a class="btn btn-primary btn-continue row-btn" href="/questionnaire/redo" role="button">Next</a></div>
+          <div class="col-8"><a class="btn btn-primary btn-continue row-btn" href="/questionnaire/redo" role="button">Next »</a></div>
         </div>
       </div>
     <?php } ?>

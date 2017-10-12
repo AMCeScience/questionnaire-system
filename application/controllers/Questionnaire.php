@@ -18,8 +18,24 @@ class Questionnaire extends MY_Auth {
 
   public function index()
   { 
+    $this->load->model('prefills');
+    $this->load->model('softwares');
+    $this->load->model('answers');
+
     $data['tab_active'] = 'landing';
     $data['progress'] = $this->progress;
+    $data['software_done'] = [];
+    $data['interesting_software'] = [];
+    $data['last_is_complete'] = $this->answers->totalCompletion($this->user_id) >= 1;
+    $data['done_precheck_stage'] = ($this->progress * 1 !== 0);
+    $data['user_type'] = $this->prefills->userType($this->user_id);
+
+    $software_done_ids = $this->prefills->doneSoftwares($this->user_id);
+
+    if (count($software_done_ids) > 0) {
+      $data['software_done'] = $this->softwares->getDataByArr($software_done_ids);
+      $data['interesting_software'] = $this->prefills->getUndoneUserSoftware($this->user_id);
+    }
 
     $this->layout->questionnaireView('questionnaire/landing', $data);
   }

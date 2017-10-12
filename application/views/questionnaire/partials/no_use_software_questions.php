@@ -15,7 +15,7 @@
 
       <?php require('questions/comments.php'); ?>
 
-      <a class="btn btn-primary btn-continue" href="/questionnaire" role="button">Next</a>
+      <a class="btn btn-primary btn-continue" href="/questionnaire" role="button">Next »</a>
     </div>
   </form>
 </div>

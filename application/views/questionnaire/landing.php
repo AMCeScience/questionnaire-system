@@ -1,11 +1,17 @@
-<div class="container">
-  <p>Check software first</p>
+<script src="/js/redo.js"></script>
 
-  <p>Progress bar</p>
+<div class="container main-container">
+  <?php if (count($software_done) > 0 && $last_is_complete) {
+    require('partials/redo_landing.php');
 
-  <p>Go to questionnaire button!</p>
+    require('partials/questionnaire_done.php');
+  } else { ?>
+    <?php if ($done_precheck_stage === false) {
+      require('partials/new_user.php');
+    } ?>
 
-  <p>Questionnaire takes approximately 30 minutes.</p>
-  
-  <p>Questionnaire saves between pages, can be left and continued later on.</p>
+    <?php if ($done_precheck_stage === true) {
+      require('partials/precheck_done.php');
+    } ?>
+  <?php } ?>
 </div>

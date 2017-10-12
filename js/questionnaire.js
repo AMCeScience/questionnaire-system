@@ -51,7 +51,7 @@ var disable_page_buttons = function() {
 var enable_page_buttons = function() {
   if ($.active < 2) {
     $('.btn-page-change').find('.btn-previous').removeClass('disabled');
-    $('.btn-page-change').find('.btn-primary').removeClass('disabled').html('Next');
+    $('.btn-page-change').find('.btn-primary').removeClass('disabled').html('Next »');
   }
 }
 
