@@ -13,17 +13,30 @@ class Dbfixture extends CI_Controller
     {
         parent::__construct();
 
-        if (is_cli() === false) {
-            show_error('Not called from CLI.', 401);
-        }
+        // if (is_cli() === false) {
+        //     show_error('Not called from CLI.', 401);
+        // }
     }
 
     public function migrate()
     {
         $this->load->library('migration');
 
+        if (is_cli() === false) {
+            die();
+        }
+
         if ($this->migration->current() === false) {
             echo $this->migration->error_string() . PHP_EOL;
         }
+    }
+
+    // TODO: remove before going live
+    public function cleanUser()
+    {
+        $user_id = $this->uri->segment(3);
+
+        $this->db->where('user_id', $user_id)->delete('answers');
+        $this->db->where('user_id', $user_id)->delete('comments');
     }
 }
