@@ -57,7 +57,7 @@ class Prefills extends CI_Model {
       $data['user_id'] = $user_id;
 
       $this->db->insert('user_progress', $data);
-    } else {
+    } else if ($old_progress->percentage * 1 <= 25) {
       $this->db->where('user_id', $user_id)->update('user_progress', $data);
     }
   }
