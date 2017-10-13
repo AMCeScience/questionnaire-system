@@ -103,9 +103,11 @@ class Prefills extends CI_Model {
     
     $interesting_arr = [];
 
-    foreach ($interesting_list as $interesting) {
-      if (!in_array($interesting->software_id, $done_list)) {
-        $interesting_arr[] = $interesting->software_id;
+    if (!is_null($interesting_list) && count($interesting_list) > 0) {
+      foreach ($interesting_list as $interesting) {
+        if (!in_array($interesting->software_id, $done_list)) {
+          $interesting_arr[] = $interesting->software_id;
+        }
       }
     }
 
