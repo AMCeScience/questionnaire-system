@@ -2,7 +2,8 @@
   <form>
     <div data-list-name="generic" class="question-container generic-questions">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Thank you for completing the check of the answers to the first questionnaire.
+          The remainder of this questionnaire will take approximately 5 to 10 minutes.
       </p>
 
       <?php $user_answers = $user_answers['generic']; ?>

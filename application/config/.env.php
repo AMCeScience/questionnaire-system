@@ -97,7 +97,7 @@ $config['generic_questions'] = [
       '8' => 'I can understand what it does',
       '9' => 'The result is useful for my job',
       '10' => 'My colleagues/peers use it',
-      '11' => 'I get supported in using it'
+      '11' => 'I get support when using it'
     ],
     'other' => true
   ],

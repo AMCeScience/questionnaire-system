@@ -3,7 +3,8 @@
     <?php if ($form_page * 1 == 0 || is_null($form_page)) { ?>
       <div data-list-name="generic" class="question-container generic-questions">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Thank you for completing the check of the answers to the first questionnaire.
+          The remainder of this questionnaire will take approximately 10 to 15 minutes.
         </p>
 
         <?php $user_answers = $user_answers['generic']; ?>
@@ -27,7 +28,9 @@
     <?php if ($form_page * 1 == 1) { ?>
       <div data-list-name="specific" class="question-container tool-specific-questions">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          In this part we ask you questions about a specific automation tool.
+          The first tool is picked automatically by the questionnaire,
+          at the end of the questionnaire you may answer the questions about additional tools of your own choosing.
         </p>
 
         <?php require('questions/software_pick.php'); ?>
@@ -52,7 +55,9 @@
     <?php if ($form_page * 1 == 2) { ?>
       <div data-list-name="usability" class="question-container usability-questions">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          In this part we ask you questions about a specific automation tool.
+          The first tool is picked automatically by the questionnaire,
+          at the end of the questionnaire you may answer the questions about additional tools of your own choosing.
         </p>
 
         <?php require('questions/software_pick.php'); ?>

@@ -3,12 +3,12 @@
 <div class="container software-check">
   <h3>Answers to the previous questionnaire</h3>
 
-  <p>Here we'd like to check whether the answers you've given to the previous questionnaire are still up-to-date.</p>
+  <p>Here we'd like to check whether the answers you've given to the previous questionnaire are still up to date.</p>
   
   <hr/>
   
   <div class="form-group prefill">
-    <h4>In how many systematic reviews were you involved on average in the past two years?</h4>
+    <h4>In how many systematic reviews in which you involved on average in the past two years?</h4>
 
     <div class="row">
         <div class="col">
