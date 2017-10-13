@@ -80,7 +80,11 @@ class Questionnaire extends MY_Auth {
     $data['user_answers'] = $this->answers->getAnswers($this->user_id);
     $data['comments'] = $this->answers->getComments($this->user_id);
 
-    $picked_software = $this->softwares->getUserSoftware($this->user_id);
+    $picked_software = null;
+
+    if ($data['user_type'] === 'using' || $data['user_type'] === 'considering') {
+      $picked_software = $this->softwares->getUserSoftware($this->user_id);
+    }
 
     if (!is_null($picked_software)) {
       $data['picked_software'] = $picked_software;
@@ -92,11 +96,12 @@ class Questionnaire extends MY_Auth {
   public function redo()
   {
     $this->load->model('prefills');
+    $this->load->helper('url');
 
     $software_arr = $this->prefills->getUndoneUserSoftware($this->user_id);
 
     if (count($software_arr) < 1) {
-      redirect('questionnaire');
+      redirect('questionnaire', 'refresh');
     }
 
     $data['tab_active'] = 'questionnaire';

@@ -111,7 +111,11 @@ class Prefills extends CI_Model {
 
     $this->load->model('softwares');
 
-    return $this->softwares->getDataByArr($interesting_arr);
+    if (count($interesting_arr) > 0) {
+      return $this->softwares->getDataByArr($interesting_arr);
+    }
+
+    return null;
   }
 
   public function selectUserSoftware($user_id)
@@ -136,6 +140,11 @@ class Prefills extends CI_Model {
 
     foreach ($interesting_list as $interesting) {
       $interesting_arr[] = $interesting->software_id;
+    }
+
+    // If no software is in array return null
+    if (count($interesting_arr) < 1) {
+      return null;
     }
 
     $this->load->model('softwares');
@@ -208,6 +217,7 @@ class Prefills extends CI_Model {
       ->from('softwares_to_prefills')
       ->join('softwares', 'softwares.software_id = softwares_to_prefills.software_id')
       ->where('prefill_id', $prefill->prefill_id)
+      ->where('softwares_to_prefills.software_id !=', 35)
       ->where_in('value', ['2', '3'])
       ->where_in('softwares_to_prefills.software_id', $this->interesting_software_ids);
 
@@ -224,6 +234,7 @@ class Prefills extends CI_Model {
       ->from('softwares_to_prefills')
       ->join('softwares', 'softwares.software_id = softwares_to_prefills.software_id')
       ->where('prefill_id', $prefill->prefill_id)
+      ->where('softwares_to_prefills.software_id !=', 35)
       ->where_in('value', ['2', '3']);
 
       if (count($done_list) > 0) {
@@ -242,10 +253,11 @@ class Prefills extends CI_Model {
     $prefill = $this->getPrefillIdForUser($user_id);
 
     $considering_obj = $this->db
-      ->select(['name', 'software_id'])
+      ->select(['name', 'softwares.software_id'])
       ->from('softwares_to_prefills')
       ->join('softwares', 'softwares.software_id = softwares_to_prefills.software_id')
       ->where(['prefill_id' => $prefill->prefill_id, 'value' => '1'])
+      ->where('softwares_to_prefills.software_id !=', 35)
       ->where_in('softwares_to_prefills.software_id', $this->interesting_software_ids);
 
     if (count($done_list) > 0) {
@@ -257,10 +269,11 @@ class Prefills extends CI_Model {
 
     if (count($considering) < 1 || $all === true) {
       $considering = $this->db
-      ->select(['name', 'software_id'])
+      ->select(['name', 'softwares.software_id'])
       ->from('softwares_to_prefills')
       ->join('softwares', 'softwares.software_id = softwares_to_prefills.software_id')
-      ->where(['prefill_id' => $prefill->prefill_id, 'value' => '1']);
+      ->where(['prefill_id' => $prefill->prefill_id, 'value' => '1'])
+      ->where('softwares_to_prefills.software_id !=', 35);
 
       if (count($done_list) > 0) {
         $considering_obj->where_not_in('softwares_to_prefills.software_id', $done_list);

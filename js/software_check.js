@@ -60,16 +60,22 @@ $(function() {
   $('.btn-continue').on('click', function(e) {
     e.preventDefault();
 
+    var btn_el = $(this);
+
+    $(btn_el).addClass('disabled').html('<div class="loader-center">Saving <div class="loader light"></div></div>');
+
     $.post({
       url: '/questionnaire/finishedPrecheck',
       data: {},
       dataType: 'json',
       success: function(response) {
         if (response.success === true) {
-          window.location = '/questionnaire';
+          window.location = $(btn_el).attr('href');
         } else if (response.logged_in === false) {
           window.location = 'login/error';
         }
+
+        $(btn_el).removeClass('disabled').html('<span class="oi oi-check" title="checked" aria-hidden="true"></span> I\'ve checked my previous answers');
       }
     });
 

@@ -247,11 +247,11 @@ class Answers extends CI_Model {
 
         break;
       case 'considering':
-        list($percentage, $question_ids) = $this->listCompletion($user_id, $list_name, $software_id);
+        list($percentage, $question_ids) = $this->listCompletion($user_id, 'generic');
 
         break;
       case 'no_use':
-        list($percentage, $question_ids) = $this->listCompletion($user_id, $list_name, $software_id);
+        list($percentage, $question_ids) = $this->listCompletion($user_id, 'generic');
 
         break;
     }
@@ -320,7 +320,7 @@ class Answers extends CI_Model {
 
       $total_to_do++;
     }
-    
+
     return array(count($question_ids_done) / $total_to_do, $question_ids_to_do);
   }
 
