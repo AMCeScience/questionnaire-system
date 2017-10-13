@@ -292,6 +292,7 @@ class Prefills extends CI_Model {
 
     return $this->db->from('softwares_to_prefills')
       ->where('prefill_id', $prefill->prefill_id)
+      ->where('software_id !=', 35)
       ->where_in('value', ['2', '3'])
       ->count_all_results() > 0;
   }
@@ -302,6 +303,7 @@ class Prefills extends CI_Model {
 
     $is_using = $this->isUsing($user_id);
     $is_considering = $this->db->from('softwares_to_prefills')
+      ->where('software_id !=', 35)
       ->where(['prefill_id' => $prefill->prefill_id, 'value' => '1'])
       ->count_all_results() > 0;
 
