@@ -1,5 +1,5 @@
 <fieldset data-question-id="<?php echo $question_number; ?>" class="form-group">
-  <legend><?php echo $question_number . '. ' . $question; ?></legend>
+  <legend><?php echo $question_number_display . '. ' . $question; ?></legend>
   <?php if (!is_null($labels)) { ?>
     <div class="row">
       <div class="col-6 label"><?php echo $labels['min']; ?></div>

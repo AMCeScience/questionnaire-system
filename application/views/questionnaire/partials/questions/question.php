@@ -16,7 +16,7 @@
   $is_followup = isset($question_obj['is_follow_up']) ? $question_obj['is_follow_up'] : '';
   $followup = isset($question_obj['follow_up']) ? $question_obj['follow_up'] : '';
 
-  $question_number = $question_begin + $question_number;
+  $question_number_display = $question_begin + $question_number;
 
   switch ($type) { 
     case 'checkbox':

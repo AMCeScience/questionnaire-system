@@ -1,5 +1,5 @@
 <fieldset data-question-id="<?php echo $question_number; ?>" class="custom-controls-stacked <?php echo ($is_followup === true ? $name . '-container hidden' : ''); ?>">
-  <legend><?php echo $question_number . '. ' . $question; ?></legend>
+  <legend><?php echo $question_number_display . '. ' . $question; ?></legend>
   
   <?php foreach($answers as $key => $option) { ?>
     <?php $selected = ''; ?>
