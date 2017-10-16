@@ -88,7 +88,7 @@ var check_list_completion = function(btn_el) {
   $('.alert').remove();
 
   $('fieldset', question_container).each(function() {
-    $(btn_el).removeClass('warning');
+    $(this).removeClass('warning');
   });
 
   var question_list = $(question_container).data('list-name');
@@ -103,7 +103,17 @@ var check_list_completion = function(btn_el) {
       if (response.completed === true) {
         window.location = $(btn_el).attr('href');
       } else {
-        $(question_container).prepend('<div class="alert alert-danger">Please answer the following questions: ' + response.todo.join(', ') + '</div>');
+        try {
+          var add_number = question_begin;  
+        } catch(e) {
+          var add_number = 0;
+        }
+
+        var todo = response.todo.map(function(question_number) {
+          return question_number + add_number;
+        });
+        
+        $(question_container).prepend('<div class="alert alert-danger">Please answer the following questions: ' + todo.join(', ') + '</div>');
 
         $('fieldset', question_container).each(function() {
           if (response.todo.indexOf($(this).data('question-id')) !== -1) {
@@ -253,18 +263,20 @@ var bind_question_inputs = function() {
 
     if (user_input !== null && Number.isInteger(user_input)) {
       slider_el.noUiSlider.set(user_input);
+      $(slider_el).removeClass('unmoved');
     } else {
-      console.log('setting');
       slider_el.noUiSlider.set(Math.round(max_answer / 2));
     }
 
     slider_el.noUiSlider.on('change', function() {
       send_answer(this.target, parseInt(this.get()));
+
+      $(slider_el).removeClass('unmoved');
     });
   });
 
   // Bind checkbox change to ajax
-  $('.custom-checkbox input').on('change', $.debounce(1000,
+  $('.custom-checkbox input').on('change', $.debounce(500,
     function() {
       var answer_values = get_input_answers($(this));
 

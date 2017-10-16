@@ -15,7 +15,7 @@
 
 <p>
   This follow-up questionnaire is composed of two parts. We first ask you to update some of your answers to the first
-  questionnaire, then we ask you general questions about how you choose and assess (new) tools.
+  questionnaire, then we will ask you general questions about how you choose and assess (new) tools.
   <?php if ($user_type !== 'no_use') { ?>
     Finally, we ask you specific questions about one of the tools that you use (or consider to use).
     The first tool is predefined by the questionnaire, however at the end you may choose to answer the

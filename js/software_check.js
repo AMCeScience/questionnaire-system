@@ -2,19 +2,7 @@ $(function() {
   var load_overlay = "<div class='load-overlay'><div class='loader-center'><div class='loader'></div></div></div>";
 
   $('.software-table input[type="radio"]').on('change', function() {
-    var parent_el = $(this).parent().parent();
-    var position = $(parent_el).position();
-    var el = $(load_overlay);
-
-    $('body').append(el);
-    
-    $(el).css({
-      position: 'absolute',
-      top: position.top,
-      left: position.left,
-      width: $(parent_el).width(),
-      height: $(parent_el).height()
-    });
+    disableButton();
 
     $.post({
       url: '/answer/updateSoftware',
@@ -24,25 +12,13 @@ $(function() {
       },
       dataType: 'json',
       success: function(response) {
-        $(el).remove();
+        enableButton();
       }
     });
   });
 
-  $('.prefill input[type="radio"]').on('change', function() {
-    var parent_el = $(this).closest('.prefill');
-    var position = $(parent_el).position();
-    var el = $(load_overlay);
-
-    $('body').append(el);
-    
-    $(el).css({
-      position: 'absolute',
-      top: position.top - 10,
-      left: position.left - 10,
-      width: $(parent_el).width() + 20,
-      height: $(parent_el).height() + 8
-    });
+  $('.prefill input[type="radio"]').on('change', function() {    
+    disableButton();
 
     $.post({
       url: '/answer/updatePrefill',
@@ -52,7 +28,7 @@ $(function() {
       },
       dataType: 'json',
       success: function(response) {
-        $(el).remove();
+        enableButton();
       }
     });
   });
@@ -62,7 +38,7 @@ $(function() {
 
     var btn_el = $(this);
 
-    $(btn_el).addClass('disabled').html('<div class="loader-center">Saving <div class="loader light"></div></div>');
+    disableButton();
 
     $.post({
       url: '/questionnaire/finishedPrecheck',
@@ -75,10 +51,18 @@ $(function() {
           window.location = 'login/error';
         }
 
-        $(btn_el).removeClass('disabled').html('<span class="oi oi-check" title="checked" aria-hidden="true"></span> I\'ve checked my previous answers');
+        enableButton();
       }
     });
 
     return false;
   });
 });
+
+var disableButton = function() {
+  $('.btn-continue').addClass('disabled').html('<div class="loader-center">Saving <div class="loader light"></div></div>');
+}
+
+var enableButton = function() {
+  $('.btn-continue').removeClass('disabled').html('<span class="oi oi-check" title="checked" aria-hidden="true"></span> I\'ve checked my previous answers');
+}

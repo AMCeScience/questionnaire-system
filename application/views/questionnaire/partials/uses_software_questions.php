@@ -7,6 +7,7 @@
         <p>
           Thank you for completing the check of the answers to the first questionnaire.
           The remainder of this questionnaire will take approximately 10 to 15 minutes.
+          First, we ask you general questions about how you choose and assess (new) tools.
         </p>
 
         <?php $user_answers = $user_answers['generic']; ?>
@@ -46,6 +47,10 @@
         <?php $user_answers = $user_answers['specific']; ?>
         <?php $question_begin = 13; ?>
 
+        <script>
+          var question_begin = 13;
+        </script>
+
         <?php foreach ($tool_questions as $question_number => $question_obj) {
           require ('questions/question.php');
         } ?>
@@ -79,6 +84,10 @@
 
         <?php $user_answers = $user_answers['usability']; ?>
         <?php $question_begin = 24; ?>
+
+        <script>
+          var question_begin = 24;
+        </script>
 
         <?php foreach ($sus_questions as $question_number => $question_obj) {
           require ('questions/question.php');

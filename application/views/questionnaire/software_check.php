@@ -8,7 +8,7 @@
   <hr/>
   
   <div class="form-group prefill">
-    <h4>In how many systematic reviews in which you involved on average in the past two years?</h4>
+    <h4>In how many systematic reviews were you involved on average in the past two years?</h4>
 
     <div class="row">
         <div class="col">
@@ -142,6 +142,16 @@
         </tr>
       <?php } ?>
     </tbody>
+
+    <tfoot class="thead-inverse">
+      <tr>
+        <th></th>
+        <th>I'm not using or considering it</th>
+        <th>I'm considering using it</th>
+        <th>I use it incidentally</th>
+        <th>I use it regularly</th>
+      </tr>
+    </tfoot>
   </table>
 
   <a class="btn btn-primary btn-continue" href="/questionnaire/form" role="button"><span class="oi oi-check" title="checked" aria-hidden="true"></span> I've checked my previous answers</a>

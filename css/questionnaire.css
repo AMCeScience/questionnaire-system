@@ -73,3 +73,7 @@ textarea {
   width: 100%;
   margin: 15px 0 0 0;
 }
+
+/* Hide noUiSlider handles */
+.unmoved .noUi-handle { background: none !important; border: none !important; box-shadow: none !important; }
+.unmoved .noUi-handle:before, .unmoved .noUi-handle:after { content: none !important; }

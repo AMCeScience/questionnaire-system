@@ -5,7 +5,8 @@
     <div data-list-name="generic" class="question-container generic-questions">
       <p>
         Thank you for completing the check of the answers to the first questionnaire.
-          The remainder of this questionnaire will take approximately 5 to 10 minutes.
+        The remainder of this questionnaire will take approximately 5 to 10 minutes.
+        Here we ask you general questions about how you choose and assess (new) tools.
       </p>
 
       <?php $user_answers = $user_answers['generic']; ?>
