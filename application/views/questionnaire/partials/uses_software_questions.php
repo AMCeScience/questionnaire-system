@@ -1,3 +1,5 @@
+<?php $question_begin = 0; ?>
+
 <div class="container main-form-container">
   <form>
     <?php if ($form_page * 1 == 0 || is_null($form_page)) { ?>
@@ -33,9 +35,16 @@
           at the end of the questionnaire you may answer the questions about additional tools of your own choosing.
         </p>
 
-        <?php require('questions/software_pick.php'); ?>
+        <div class="alert alert-info">
+          You are filling out the questionnaire for the following tool:
+
+          <h3><?php echo $picked_software->name; ?></h3>
+        </div>
+
+        <input type="hidden" name="software_id" value="<?php echo $picked_software->software_id; ?>"/>
 
         <?php $user_answers = $user_answers['specific']; ?>
+        <?php $question_begin = 13; ?>
 
         <?php foreach ($tool_questions as $question_number => $question_obj) {
           require ('questions/question.php');
@@ -55,14 +64,21 @@
     <?php if ($form_page * 1 == 2) { ?>
       <div data-list-name="usability" class="question-container usability-questions">
         <p>
-          In this part we ask you questions about a specific automation tool.
+          On this last page we ask about the usability of a specific automation tool.
           The first tool is picked automatically by the questionnaire,
           at the end of the questionnaire you may answer the questions about additional tools of your own choosing.
         </p>
 
-        <?php require('questions/software_pick.php'); ?>
+        <div class="alert alert-info">
+          You are filling out the usability questions for the following tool:
+
+          <h3><?php echo $picked_software->name; ?></h3>
+        </div>
+
+        <input type="hidden" name="software_id" value="<?php echo $picked_software->software_id; ?>"/>
 
         <?php $user_answers = $user_answers['usability']; ?>
+        <?php $question_begin = 24; ?>
 
         <?php foreach ($sus_questions as $question_number => $question_obj) {
           require ('questions/question.php');

@@ -1,3 +1,5 @@
+<?php $question_begin = 0; ?>
+
 <div class="container">
   <form>
     <div data-list-name="generic" class="question-container generic-questions">
