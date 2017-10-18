@@ -16,7 +16,7 @@
 <p>
   This follow-up questionnaire is composed of two parts. We first ask you to update some of your answers to the first
   questionnaire, then we will ask you general questions about how you choose and assess (new) tools.
-  <?php if ($user_type !== 'no_use') { ?>
+  <?php if ($user_type === 'using') { ?>
     Finally, we ask you specific questions about one of the tools that you use (or consider to use).
     The first tool is predefined by the questionnaire, however at the end you may choose to answer the
     questions about additional tools of your own choosing.
@@ -24,7 +24,7 @@
 </p>
 
 <p class="font-weight-bold">
-  <?php $duration = ($user_type === 'no_use' ? '5 to 10 minutes' : '15 to 20 minutes') ?>
+  <?php $duration = ($user_type !== 'using' ? '5 to 10 minutes' : '15 to 20 minutes') ?>
 
   This questionnaire will take approximately <?php echo $duration; ?> to complete.
   You can pause and continue the questionnaire at any point, answers will be stored between sessions.
