@@ -31,7 +31,7 @@ class Migration_Insert_test_users extends CI_Migration {
       // Considering user
 
       $data = [
-        'emailaddress' => 'test_considering@test.com',
+        'emailaddress' => 'test_no_use@test.com',
         'login_hash' => hash('sha256', $this->generateRandomString(100))
       ];
       
@@ -55,7 +55,7 @@ class Migration_Insert_test_users extends CI_Migration {
       // No use user
 
       $data = [
-        'emailaddress' => 'test_no_use@test.com',
+        'emailaddress' => 'test_considering@test.com',
         'login_hash' => hash('sha256', $this->generateRandomString(100))
       ];
       
@@ -79,7 +79,7 @@ class Migration_Insert_test_users extends CI_Migration {
   }
 
   public function down() {
-    $this->db->where_in('emailaddress', $this->users_arr)->delete('users');
+    
   }
 
   private function generateRandomString($length = 50) {
