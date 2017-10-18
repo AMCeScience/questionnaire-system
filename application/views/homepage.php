@@ -23,7 +23,15 @@
 		<div class="col-12">
 			<h2 class="featurette-heading">Goal of this questionnaire</h2>
 			<p class="lead">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        The aim of this research is to gain insight in the usage of, and the experience with,
+        computer tools, programs, and software that automate (parts of) the systematic review process.
+      </p>
+
+      <p class="lead">
+          The results of this research will support the systematic review community in making informed
+          decisions about which automation tools to consider. The first questionnaire collected general characteristics
+          about the community, such as how many reviews are done on average and which tools are used.
+          Through this second questionnaire we attempt to understand the reasoning behind the use of automation tools.
 			</p>
 		</div>
 	</div>
