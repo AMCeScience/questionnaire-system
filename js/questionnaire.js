@@ -77,7 +77,7 @@ var bind_check_list_completion = function() {
 
 var check_list_completion = function(btn_el, first) {
   var ua = window.navigator.userAgent;
-  var msie = ua.indexOf("MSIE ");
+  var msie = ua.indexOf("MSIE");
 
   if (msie > 0 && first)  {
     setTimeout(check_list_completion(btn_el), 500, false);
