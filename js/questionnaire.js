@@ -261,7 +261,7 @@ var bind_question_inputs = function() {
       }
     });
 
-    if (user_input !== null && Number.isInteger(user_input)) {
+    if (user_input !== null) {
       slider_el.noUiSlider.set(user_input);
       $(slider_el).removeClass('unmoved');
     } else {
