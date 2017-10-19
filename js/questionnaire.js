@@ -60,7 +60,7 @@ var prevent_window_change = function() {
       var ua = window.navigator.userAgent;
       var msie = ua.indexOf("MSIE ");
 
-      if (msie > 0) {
+      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
         return;
       } else if ($.active > 0) {
         return 'Still busy storing answers, are you sure?';
@@ -84,7 +84,7 @@ var check_list_completion = function(btn_el, first) {
   var ua = window.navigator.userAgent;
   var msie = ua.indexOf("MSIE ");
 
-  if (msie > 0 && first)  {
+  if ((msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) && first)  {
     setTimeout(check_list_completion(btn_el), 500, false);
   } else if ($.active > 0) {
     setTimeout(check_list_completion(btn_el), 100, false);
