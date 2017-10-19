@@ -57,7 +57,12 @@ var enable_page_buttons = function() {
 
 var prevent_window_change = function() {
   $(window).bind('beforeunload', function() {
-      if ($.active > 0) {
+      var ua = window.navigator.userAgent;
+      var msie = ua.indexOf("MSIE");
+
+      if (msie > 0) {
+        setTimeout(function() { return; }, 500);
+      } else if ($.active > 0) {
         return 'Still busy storing answers, are you sure?';
       }
       
