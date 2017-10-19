@@ -164,7 +164,7 @@ class Prefills extends CI_Model {
 
     // Select the first item in the preference array
     foreach ($preference_order as $preference) {
-      if (in_array($preference->software_id, $interesting_arr)) {
+      if (in_array($preference, $interesting_arr)) {
         return $preference;
       }
     }
