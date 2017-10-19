@@ -71,13 +71,18 @@ var bind_check_list_completion = function() {
 
     var btn_el = $(this);
 
-    check_list_completion(btn_el);
+    check_list_completion(btn_el, true);
   });
 }
 
-var check_list_completion = function(btn_el) {
-  if ($.active > 0) {
-    setTimeout(check_list_completion(btn_el), 100);
+var check_list_completion = function(btn_el, first) {
+  var ua = window.navigator.userAgent;
+  var msie = ua.indexOf("MSIE ");
+
+  if (msie > 0 && first)  {
+    setTimeout(check_list_completion(btn_el), 500, false);
+  } else if ($.active > 0) {
+    setTimeout(check_list_completion(btn_el), 100, false);
 
     return;
   }
