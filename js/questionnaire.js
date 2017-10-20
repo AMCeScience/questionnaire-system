@@ -59,8 +59,9 @@ var prevent_window_change = function() {
   $(window).bind('beforeunload', function() {
       var ua = window.navigator.userAgent;
       var msie = ua.indexOf("MSIE ");
+      var edge = ua.indexOf("Edge");
 
-      if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+      if (msie > 0 || edge > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
         return;
       } else if ($.active > 0) {
         return 'Still busy storing answers, are you sure?';
@@ -83,8 +84,9 @@ var bind_check_list_completion = function() {
 var check_list_completion = function(btn_el, first) {
   var ua = window.navigator.userAgent;
   var msie = ua.indexOf("MSIE ");
+  var edge = ua.indexOf("Edge");
 
-  if ((msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) && first)  {
+  if ((msie > 0 || edge > -1 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) && first)  {
     setTimeout(check_list_completion(btn_el), 500, false);
   } else if ($.active > 0) {
     setTimeout(check_list_completion(btn_el), 100, false);
