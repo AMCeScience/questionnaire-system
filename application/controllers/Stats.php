@@ -26,6 +26,14 @@ class Stats extends MY_Auth
             $user->metadata = $this->users->getUser($user->user_id);
         }
 
+        uasort($users, function($a, $b) {
+            if ($a->completion * 1 === $b->completion * 1) {
+                return 0;
+            }
+
+            return ($a->completion * 1 < $b->completion * 1) ? -1 : 1;
+        });
+
         $data['users'] = $users;
 
         $this->load->view('stats', $data);
