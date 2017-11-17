@@ -28,4 +28,8 @@ class Users extends CI_Model {
 
     return $user->percentage;
   }
+
+  public function getUser($user_id) {
+    return $this->db->where('user_id', $user_id)->get('users')->row();
+  }
 }

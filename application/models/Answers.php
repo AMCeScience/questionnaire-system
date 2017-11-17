@@ -324,4 +324,9 @@ class Answers extends CI_Model {
     return array(count($question_ids_done) / $total_to_do, $question_ids_to_do);
   }
 
+  public function getUniqueUsersWithAnswers()
+  {
+    return $this->db->select(['COUNT(*) AS number_of_answers', 'user_id'], false)->from('answers')->group_by('user_id')->get()->result();
+  }
+
 }
